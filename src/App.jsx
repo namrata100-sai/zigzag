@@ -1,56 +1,37 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import {
   FiMenu,
   FiX,
-  FiArrowRight,
   FiPhone,
   FiMapPin,
+  FiArrowRight,
   FiClock,
-  FiStar,
-  FiInstagram,
+  FiScissors,
+  FiUser,
+  FiMessageCircle,
 } from "react-icons/fi";
 import "./App.css";
 
 const services = [
   {
-    title: "Hair Cut & Styling",
-    description:
-      "Modern cuts and professional styling designed to suit your personality.",
-    price: "Starting from ₹299",
+    icon: <FiScissors />,
+    title: "Men's Haircut",
+    text: "Clean and stylish haircuts tailored to your look.",
   },
   {
-    title: "Hair Colour",
-    description:
-      "Refresh your look with beautiful colours, highlights and modern techniques.",
-    price: "Starting from ₹799",
+    icon: <FiUser />,
+    title: "Beard Trim",
+    text: "Keep your beard sharp, neat and well shaped.",
   },
   {
-    title: "Hair Treatment",
-    description:
-      "Professional treatments to help your hair look healthier, smoother and more vibrant.",
-    price: "Starting from ₹599",
+    icon: <FiScissors />,
+    title: "Hair Styling",
+    text: "Get a fresh style for everyday looks or special occasions.",
   },
   {
-    title: "Bridal & Occasion",
-    description:
-      "Elegant styling and grooming for weddings, celebrations and special occasions.",
-    price: "Consult for pricing",
-  },
-];
-
-const reviews = [
-  {
-    name: "Happy Client",
-    text: "Great service and a friendly atmosphere. Loved the overall experience.",
-  },
-  {
-    name: "Happy Client",
-    text: "Professional service and a very comfortable salon experience.",
-  },
-  {
-    name: "Happy Client",
-    text: "Really liked the styling and attention to detail. Would definitely visit again.",
+    icon: <FiUser />,
+    title: "Shaving & Grooming",
+    text: "Classic grooming for a clean and confident appearance.",
   },
 ];
 
@@ -64,9 +45,8 @@ function App() {
 
       {/* NAVBAR */}
       <header className="navbar">
-
         <a href="#home" className="logo" onClick={closeMenu}>
-          <div className="logo-icon">Z</div>
+          <div className="logo-mark">ZZ</div>
 
           <div className="logo-text">
             <strong>ZIG ZAG</strong>
@@ -74,297 +54,249 @@ function App() {
           </div>
         </a>
 
-        <nav className={menuOpen ? "nav-menu open" : "nav-menu"}>
+        <nav className={menuOpen ? "nav-links open" : "nav-links"}>
           <a href="#home" onClick={closeMenu}>Home</a>
-          <a href="#about" onClick={closeMenu}>About</a>
           <a href="#services" onClick={closeMenu}>Services</a>
           <a href="#gallery" onClick={closeMenu}>Gallery</a>
+          <a href="#about" onClick={closeMenu}>About</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
 
-        <a href="#contact" className="nav-button">
-          Book Now
+        <a href="#contact" className="nav-cta">
+          Book Appointment
         </a>
 
         <button
-          className="menu-button"
+          className="menu-btn"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
-
       </header>
 
       {/* HERO */}
       <section className="hero" id="home">
+        <div className="hero-overlay"></div>
+
         <div className="hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="eyebrow">WELCOME TO ZIG ZAG</p>
+          <div className="hero-tag">
+            MEN'S HAIR & GROOMING
+          </div>
 
-            <h1>
-              Look good.
-              <br />
-              <span>Feel confident.</span>
-            </h1>
+          <h1>
+            Look Sharp.
+            <br />
+            <span>Feel Confident.</span>
+          </h1>
 
-            <p className="hero-description">
-              Modern hair styling and grooming for men and women.
-              Discover a salon experience created around your style.
-            </p>
+          <p>
+            Professional men's haircuts, beard grooming
+            and styling in a comfortable local salon.
+          </p>
 
-            <div className="hero-buttons">
-              <a href="#services" className="gold-button">
-                Explore Services
-                <FiArrowRight />
-              </a>
+          <div className="hero-buttons">
+            <a href="#contact" className="primary-btn">
+              Book Appointment
+              <FiArrowRight />
+            </a>
 
-              <a href="#contact" className="outline-button">
-                Contact Us
-              </a>
-            </div>
-          </motion.div>
+            <a href="#services" className="secondary-btn">
+              View Services
+            </a>
+          </div>
         </div>
 
         <div className="hero-bottom">
-          <span>HAIR</span>
+          <span>HAIRCUTS</span>
+          <span>BEARD</span>
+          <span>GROOMING</span>
           <span>STYLE</span>
-          <span>BEAUTY</span>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section className="about section" id="about">
-        <div className="section-label">01 — ABOUT US</div>
-
-        <div className="about-grid">
-          <div>
-            <p className="gold-label">YOUR STYLE, YOUR WAY</p>
-
-            <h2>
-              More than a haircut.
-              <br />
-              <em>It's your look.</em>
-            </h2>
-          </div>
-
-          <div className="about-text">
-            <p>
-              Zig Zag Hair Salon is a modern destination for
-              professional hair styling and grooming in Belagavi.
-            </p>
-
-            <p>
-              Whether you are looking for a fresh haircut,
-              a new hair colour or getting ready for a special
-              occasion, our focus is to make you look and feel
-              your best.
-            </p>
-
-            <a href="#contact" className="text-link">
-              Visit Zig Zag <FiArrowRight />
-            </a>
-          </div>
         </div>
       </section>
 
       {/* SERVICES */}
       <section className="services section" id="services">
-        <div className="section-top">
+        <div className="section-heading">
           <div>
-            <div className="section-label">02 — SERVICES</div>
-
-            <h2>
-              What we <em>offer</em>
-            </h2>
+            <span className="section-number">01</span>
+            <span className="section-label">OUR SERVICES</span>
           </div>
 
+          <h2>
+            Everything you need
+            <br />
+            <span>to look your best.</span>
+          </h2>
+
           <p>
-            Professional services designed to keep your
-            hair looking fresh, healthy and stylish.
+            From a clean haircut to a sharp beard,
+            we've got your everyday grooming covered.
           </p>
         </div>
 
         <div className="services-grid">
           {services.map((service, index) => (
-            <motion.div
-              className="service-card"
-              key={service.title}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <span className="service-number">
+            <div className="service-card" key={index}>
+              <div className="service-icon">
+                {service.icon}
+              </div>
+
+              <span className="service-number-small">
                 0{index + 1}
               </span>
 
-              <div className="service-icon">✦</div>
-
               <h3>{service.title}</h3>
 
-              <p>{service.description}</p>
-
-              <span className="service-price">
-                {service.price}
-              </span>
+              <p>{service.text}</p>
 
               <a href="#contact">
-                Book Service <FiArrowRight />
+                Enquire Now <FiArrowRight />
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* WHY CHOOSE US */}
-      <section className="why-section">
-        <div className="why-inner">
-          <div>
-            <p className="gold-label">WHY ZIG ZAG?</p>
+      {/* ABOUT */}
+      <section className="about section" id="about">
+        <div className="about-image">
+          <img
+            src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1000&q=85"
+            alt="Men's barber haircut"
+          />
+        </div>
 
-            <h2>
-              Your confidence
-              <br />
-              <em>comes first.</em>
-            </h2>
+        <div className="about-content">
+          <span className="section-label">02 — ABOUT ZIG ZAG</span>
 
-            <p className="why-text">
-              We believe a great salon experience should be
-              comfortable, professional and personalized.
-            </p>
-          </div>
+          <h2>
+            A good haircut
+            <br />
+            <span>changes everything.</span>
+          </h2>
 
-          <div className="why-list">
-            <div>
-              <span>01</span>
-              <div>
-                <h3>Professional Service</h3>
-                <p>Attention to detail in every service.</p>
-              </div>
-            </div>
+          <p>
+            Zig Zag Hair Salon is a local men's grooming
+            destination focused on clean haircuts, beard
+            styling and modern men's looks.
+          </p>
 
-            <div>
-              <span>02</span>
-              <div>
-                <h3>Modern Styles</h3>
-                <p>Fresh looks that match today's trends.</p>
-              </div>
-            </div>
+          <p>
+            Whether you want a simple everyday haircut or
+            a fresh new style, our goal is to give you a
+            comfortable experience and a look you feel good in.
+          </p>
 
-            <div>
-              <span>03</span>
-              <div>
-                <h3>Personal Attention</h3>
-                <p>Your style and comfort always matter.</p>
-              </div>
-            </div>
-          </div>
+          <a href="#contact" className="text-link">
+            Visit Us <FiArrowRight />
+          </a>
         </div>
       </section>
 
       {/* GALLERY */}
       <section className="gallery section" id="gallery">
-        <div className="section-top">
-          <div>
-            <div className="section-label">03 — GALLERY</div>
-
-            <h2>
-              Style <em>inspired.</em>
-            </h2>
-          </div>
-
-          <p>
-            A glimpse into the modern salon experience.
-          </p>
-        </div>
-
-        <div className="gallery-grid">
-
-          <div className="gallery-large">
-            <img
-              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85"
-              alt="Salon interior"
-            />
-          </div>
-
-          <div className="gallery-small">
-            <img
-              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=85"
-              alt="Hair styling"
-            />
-
-            <div className="gallery-caption">
-              <span>STYLE</span>
-              <strong>Made for you.</strong>
-            </div>
-          </div>
-
-          <div className="gallery-wide">
-            <img
-              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=85"
-              alt="Hair salon styling"
-            />
-          </div>
-
-        </div>
-      </section>
-
-      {/* REVIEWS */}
-      <section className="reviews section">
-        <div className="reviews-heading">
-          <div className="section-label">04 — REVIEWS</div>
+        <div className="gallery-heading">
+          <span className="section-label">03 — GALLERY</span>
 
           <h2>
-            What our clients
+            Fresh cuts.
             <br />
-            <em>say.</em>
+            <span>Fresh style.</span>
           </h2>
         </div>
 
-        <div className="reviews-grid">
-          {reviews.map((review, index) => (
-            <div className="review-card" key={index}>
-              <div className="stars">
-                <FiStar />
-                <FiStar />
-                <FiStar />
-                <FiStar />
-                <FiStar />
-              </div>
+        <div className="gallery-grid">
+          <div className="gallery-item gallery-large">
+            <img
+              src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=1100&q=85"
+              alt="Men's haircut"
+            />
+          </div>
 
-              <p>"{review.text}"</p>
+          <div className="gallery-item">
+            <img
+              src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=900&q=85"
+              alt="Men's grooming"
+            />
+          </div>
 
-              <strong>{review.name}</strong>
+          <div className="gallery-item gallery-dark">
+            <div>
+              <span>YOUR STYLE</span>
+              <strong>YOUR LOOK.</strong>
             </div>
-          ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="why-us">
+        <div className="why-inner">
+          <div>
+            <span className="section-label">04 — WHY ZIG ZAG</span>
+
+            <h2>
+              Simple.
+              <br />
+              <span>Professional.</span>
+              <br />
+              Reliable.
+            </h2>
+          </div>
+
+          <div className="why-list">
+            <div className="why-item">
+              <span>01</span>
+              <div>
+                <h3>Men's Grooming</h3>
+                <p>
+                  Services focused on men's hair and grooming.
+                </p>
+              </div>
+            </div>
+
+            <div className="why-item">
+              <span>02</span>
+              <div>
+                <h3>Modern Styles</h3>
+                <p>
+                  Clean and contemporary looks for every day.
+                </p>
+              </div>
+            </div>
+
+            <div className="why-item">
+              <span>03</span>
+              <div>
+                <h3>Comfortable Experience</h3>
+                <p>
+                  A relaxed local salon where you can feel comfortable.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CONTACT */}
-      <section className="contact" id="contact">
-
+      <section className="contact section" id="contact">
         <div className="contact-content">
-          <p className="gold-label">05 — CONTACT</p>
+          <span className="section-label">05 — CONTACT</span>
 
           <h2>
             Ready for a
             <br />
-            <em>new look?</em>
+            <span>fresh look?</span>
           </h2>
 
-          <p className="contact-description">
-            Visit Zig Zag Hair Salon and let us help you
-            create a style that feels completely yours.
+          <p>
+            Get in touch with Zig Zag Hair Salon for your
+            next haircut or grooming appointment.
           </p>
 
-          <div className="contact-details">
+          <div className="contact-info">
 
-            <div>
+            <div className="info-item">
               <FiMapPin />
               <div>
                 <strong>Location</strong>
@@ -372,64 +304,66 @@ function App() {
               </div>
             </div>
 
-            <div>
+            <div className="info-item">
               <FiClock />
               <div>
                 <strong>Opening Hours</strong>
-                <span>Contact salon for current timings</span>
+                <span>Please contact the salon</span>
               </div>
             </div>
 
-            <div>
+            <div className="info-item">
               <FiPhone />
               <div>
                 <strong>Appointments</strong>
-                <span>Contact the salon directly</span>
+                <span>Call the salon directly</span>
               </div>
             </div>
 
           </div>
 
           <div className="contact-buttons">
-            <a href="tel:" className="gold-button">
-              Call Salon <FiPhone />
+
+            <a href="tel:" className="primary-btn">
+              <FiPhone />
+              Call Now
             </a>
 
             <a
               href="https://www.google.com/maps/search/?api=1&query=Zig+Zag+Hair+Salon+Belagavi"
               target="_blank"
               rel="noreferrer"
-              className="outline-button"
+              className="map-btn"
             >
               <FiMapPin />
               Get Directions
             </a>
+
           </div>
         </div>
 
-        <div className="contact-box">
-          <div className="contact-logo">Z</div>
+        <div className="contact-card">
+          <div className="big-logo">ZZ</div>
 
           <h3>ZIG ZAG</h3>
-          <span>HAIR SALON</span>
+          <span>MEN'S HAIR SALON</span>
 
-          <div className="contact-line"></div>
+          <div className="contact-divider"></div>
 
           <p>
-            STYLE
+            HAIRCUTS
             <br />
-            CONFIDENCE
+            BEARD
             <br />
-            BEAUTY
+            GROOMING
           </p>
         </div>
-
       </section>
 
       {/* FOOTER */}
       <footer>
-        <div className="footer-logo">
-          <div className="logo-icon">Z</div>
+        <div className="footer-brand">
+          <div className="footer-logo">ZZ</div>
 
           <div>
             <strong>ZIG ZAG</strong>
@@ -437,15 +371,17 @@ function App() {
           </div>
         </div>
 
-        <p>Modern style. Confident you.</p>
+        <p>
+          Modern men's haircuts & grooming.
+        </p>
 
-        <div className="social">
-          <FiInstagram />
-        </div>
+        <span className="footer-copy">
+          © {new Date().getFullYear()} Zig Zag Hair Salon
+        </span>
       </footer>
 
-      {/* MOBILE BOOK BUTTON */}
-      <a href="#contact" className="mobile-book">
+      {/* MOBILE CTA */}
+      <a href="#contact" className="mobile-cta">
         <FiPhone />
         Book Appointment
       </a>
