@@ -1,53 +1,56 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  FiArrowRight,
-  FiCalendar,
-  FiClock,
-  FiMapPin,
-  FiPhone,
-  FiStar,
-  FiInstagram,
   FiMenu,
   FiX,
+  FiArrowRight,
+  FiPhone,
+  FiMapPin,
+  FiClock,
+  FiStar,
+  FiInstagram,
 } from "react-icons/fi";
-import { useState } from "react";
 import "./App.css";
 
 const services = [
   {
-    title: "Hair Styling",
-    text: "Modern cuts, styling and treatments tailored to your look.",
-    price: "From ₹299",
+    title: "Hair Cut & Styling",
+    description:
+      "Modern cuts and professional styling designed to suit your personality.",
+    price: "Starting from ₹299",
   },
   {
     title: "Hair Colour",
-    text: "Beautiful colour, highlights and professional hair treatments.",
-    price: "From ₹999",
+    description:
+      "Refresh your look with beautiful colours, highlights and modern techniques.",
+    price: "Starting from ₹799",
   },
   {
-    title: "Facial & Skin Care",
-    text: "Relaxing beauty treatments designed to refresh your skin.",
-    price: "From ₹499",
+    title: "Hair Treatment",
+    description:
+      "Professional treatments to help your hair look healthier, smoother and more vibrant.",
+    price: "Starting from ₹599",
   },
   {
-    title: "Bridal & Makeup",
-    text: "Elegant makeup and styling for your special occasions.",
-    price: "From ₹1,499",
+    title: "Bridal & Occasion",
+    description:
+      "Elegant styling and grooming for weddings, celebrations and special occasions.",
+    price: "Consult for pricing",
   },
 ];
 
 const reviews = [
   {
     name: "Happy Client",
-    text: "Amazing service and very professional staff. Loved the experience!",
+    text: "Great service and a friendly atmosphere. Loved the overall experience.",
   },
   {
     name: "Happy Client",
-    text: "The salon has a beautiful atmosphere and the service was excellent.",
+    text: "Professional service and a very comfortable salon experience.",
   },
   {
     name: "Happy Client",
-    text: "Very friendly staff and great attention to detail.",
+    text: "Really liked the styling and attention to detail. Would definitely visit again.",
   },
 ];
 
@@ -57,170 +60,141 @@ function App() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <div className="site">
+    <div className="app">
 
       {/* NAVBAR */}
       <header className="navbar">
-        <a href="#home" className="logo">
-          <span>B</span>
-          <div>
-            <strong>BLOSSOM</strong>
-            <small>UNISEX SALON</small>
+
+        <a href="#home" className="logo" onClick={closeMenu}>
+          <div className="logo-icon">Z</div>
+
+          <div className="logo-text">
+            <strong>ZIG ZAG</strong>
+            <span>HAIR SALON</span>
           </div>
         </a>
 
-        <nav className={menuOpen ? "nav-links active" : "nav-links"}>
+        <nav className={menuOpen ? "nav-menu open" : "nav-menu"}>
           <a href="#home" onClick={closeMenu}>Home</a>
           <a href="#about" onClick={closeMenu}>About</a>
           <a href="#services" onClick={closeMenu}>Services</a>
           <a href="#gallery" onClick={closeMenu}>Gallery</a>
-          <a href="#reviews" onClick={closeMenu}>Reviews</a>
           <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
 
         <a href="#contact" className="nav-button">
-          Book Visit
+          Book Now
         </a>
 
         <button
           className="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label="Toggle menu"
         >
           {menuOpen ? <FiX /> : <FiMenu />}
         </button>
+
       </header>
 
       {/* HERO */}
       <section className="hero" id="home">
-        <div className="hero-overlay"></div>
-
         <div className="hero-content">
-          <motion.p
-            className="eyebrow"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            BEAUTY • STYLE • CONFIDENCE
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 35 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-          >
-            Your Style.
-            <br />
-            <em>Your Confidence.</em>
-          </motion.h1>
-
-          <motion.p
-            className="hero-text"
+          <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ duration: 0.7 }}
           >
-            A modern unisex salon experience designed to bring out
-            the best version of you.
-          </motion.p>
+            <p className="eyebrow">WELCOME TO ZIG ZAG</p>
 
-          <motion.div
-            className="hero-buttons"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.45 }}
-          >
-            <a href="#services" className="primary-btn">
-              Explore Services <FiArrowRight />
-            </a>
+            <h1>
+              Look good.
+              <br />
+              <span>Feel confident.</span>
+            </h1>
 
-            <a href="#contact" className="outline-btn">
-              Book Your Visit
-            </a>
+            <p className="hero-description">
+              Modern hair styling and grooming for men and women.
+              Discover a salon experience created around your style.
+            </p>
+
+            <div className="hero-buttons">
+              <a href="#services" className="gold-button">
+                Explore Services
+                <FiArrowRight />
+              </a>
+
+              <a href="#contact" className="outline-button">
+                Contact Us
+              </a>
+            </div>
           </motion.div>
         </div>
 
         <div className="hero-bottom">
-          <div>
-            <FiStar />
-            <strong>4.8</strong>
-            <span>Customer Rating</span>
-          </div>
-
-          <div>
-            <FiClock />
-            <strong>8:30 AM – 8 PM</strong>
-            <span>Salon Hours</span>
-          </div>
-
-          <div>
-            <FiMapPin />
-            <strong>Tilakwadi</strong>
-            <span>Belagavi</span>
-          </div>
+          <span>HAIR</span>
+          <span>STYLE</span>
+          <span>BEAUTY</span>
         </div>
       </section>
 
       {/* ABOUT */}
       <section className="about section" id="about">
-        <div className="about-image">
-          <div className="image-card">
-            <div className="image-placeholder">BLOSSOM</div>
+        <div className="section-label">01 — ABOUT US</div>
+
+        <div className="about-grid">
+          <div>
+            <p className="gold-label">YOUR STYLE, YOUR WAY</p>
+
+            <h2>
+              More than a haircut.
+              <br />
+              <em>It's your look.</em>
+            </h2>
           </div>
 
-          <div className="experience-card">
-            <strong>BEAUTY</strong>
-            <span>MEETS STYLE</span>
+          <div className="about-text">
+            <p>
+              Zig Zag Hair Salon is a modern destination for
+              professional hair styling and grooming in Belagavi.
+            </p>
+
+            <p>
+              Whether you are looking for a fresh haircut,
+              a new hair colour or getting ready for a special
+              occasion, our focus is to make you look and feel
+              your best.
+            </p>
+
+            <a href="#contact" className="text-link">
+              Visit Zig Zag <FiArrowRight />
+            </a>
           </div>
-        </div>
-
-        <div className="about-content">
-          <p className="section-label">ABOUT BLOSSOM</p>
-
-          <h2>
-            Where beauty
-            <br />
-            <em>blooms.</em>
-          </h2>
-
-          <p>
-            Blossom Unisex Salon brings together modern styling,
-            professional beauty services and a relaxing salon
-            experience in the heart of Belagavi.
-          </p>
-
-          <p>
-            Whether you're looking for a fresh new hairstyle,
-            a beautiful colour, skincare or occasion makeup,
-            our goal is to help you leave feeling confident.
-          </p>
-
-          <a href="#services" className="text-link">
-            Discover our services <FiArrowRight />
-          </a>
         </div>
       </section>
 
       {/* SERVICES */}
       <section className="services section" id="services">
-        <div className="section-heading">
+        <div className="section-top">
           <div>
-            <p className="section-label">WHAT WE OFFER</p>
-            <h2>Our <em>Services</em></h2>
+            <div className="section-label">02 — SERVICES</div>
+
+            <h2>
+              What we <em>offer</em>
+            </h2>
           </div>
 
           <p>
-            Professional beauty and styling services
-            created around you.
+            Professional services designed to keep your
+            hair looking fresh, healthy and stylish.
           </p>
         </div>
 
-        <div className="service-grid">
+        <div className="services-grid">
           {services.map((service, index) => (
             <motion.div
               className="service-card"
               key={service.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
@@ -229,75 +203,132 @@ function App() {
                 0{index + 1}
               </span>
 
+              <div className="service-icon">✦</div>
+
               <h3>{service.title}</h3>
 
-              <p>{service.text}</p>
+              <p>{service.description}</p>
 
-              <div className="service-bottom">
-                <span>{service.price}</span>
-                <FiArrowRight />
-              </div>
+              <span className="service-price">
+                {service.price}
+              </span>
+
+              <a href="#contact">
+                Book Service <FiArrowRight />
+              </a>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* FEATURE */}
-      <section className="feature">
-        <div className="feature-content">
-          <p className="section-label">THE BLOSSOM EXPERIENCE</p>
+      {/* WHY CHOOSE US */}
+      <section className="why-section">
+        <div className="why-inner">
+          <div>
+            <p className="gold-label">WHY ZIG ZAG?</p>
 
-          <h2>
-            Look good.
-            <br />
-            <em>Feel amazing.</em>
-          </h2>
+            <h2>
+              Your confidence
+              <br />
+              <em>comes first.</em>
+            </h2>
 
-          <p>
-            From your first consultation to your final look,
-            every detail is designed to make your salon visit
-            comfortable and memorable.
-          </p>
+            <p className="why-text">
+              We believe a great salon experience should be
+              comfortable, professional and personalized.
+            </p>
+          </div>
 
-          <a href="#contact" className="primary-btn">
-            Plan Your Visit <FiArrowRight />
-          </a>
+          <div className="why-list">
+            <div>
+              <span>01</span>
+              <div>
+                <h3>Professional Service</h3>
+                <p>Attention to detail in every service.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>02</span>
+              <div>
+                <h3>Modern Styles</h3>
+                <p>Fresh looks that match today's trends.</p>
+              </div>
+            </div>
+
+            <div>
+              <span>03</span>
+              <div>
+                <h3>Personal Attention</h3>
+                <p>Your style and comfort always matter.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* GALLERY */}
       <section className="gallery section" id="gallery">
-        <div className="section-heading centered">
-          <p className="section-label">OUR WORK</p>
-          <h2>Style <em>Gallery</em></h2>
+        <div className="section-top">
+          <div>
+            <div className="section-label">03 — GALLERY</div>
+
+            <h2>
+              Style <em>inspired.</em>
+            </h2>
+          </div>
+
           <p>
-            A glimpse of the beauty and creativity at Blossom.
+            A glimpse into the modern salon experience.
           </p>
         </div>
 
         <div className="gallery-grid">
-          <div className="gallery-box large">HAIR</div>
-          <div className="gallery-box">STYLE</div>
-          <div className="gallery-box">BEAUTY</div>
-          <div className="gallery-box">GLOW</div>
-          <div className="gallery-box large">BLOSSOM</div>
+
+          <div className="gallery-large">
+            <img
+              src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85"
+              alt="Salon interior"
+            />
+          </div>
+
+          <div className="gallery-small">
+            <img
+              src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=900&q=85"
+              alt="Hair styling"
+            />
+
+            <div className="gallery-caption">
+              <span>STYLE</span>
+              <strong>Made for you.</strong>
+            </div>
+          </div>
+
+          <div className="gallery-wide">
+            <img
+              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=85"
+              alt="Hair salon styling"
+            />
+          </div>
+
         </div>
       </section>
 
       {/* REVIEWS */}
-      <section className="reviews section" id="reviews">
-        <div className="section-heading centered">
-          <p className="section-label">CLIENT LOVE</p>
-          <h2>What Our Clients <em>Say</em></h2>
+      <section className="reviews section">
+        <div className="reviews-heading">
+          <div className="section-label">04 — REVIEWS</div>
+
+          <h2>
+            What our clients
+            <br />
+            <em>say.</em>
+          </h2>
         </div>
 
-        <div className="review-grid">
+        <div className="reviews-grid">
           {reviews.map((review, index) => (
-            <motion.div
-              className="review-card"
-              key={index}
-              whileHover={{ y: -8 }}
-            >
+            <div className="review-card" key={index}>
               <div className="stars">
                 <FiStar />
                 <FiStar />
@@ -309,107 +340,116 @@ function App() {
               <p>"{review.text}"</p>
 
               <strong>{review.name}</strong>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
       {/* CONTACT */}
-      <section className="contact section" id="contact">
-        <div className="contact-info">
-          <p className="section-label">VISIT BLOSSOM</p>
+      <section className="contact" id="contact">
+
+        <div className="contact-content">
+          <p className="gold-label">05 — CONTACT</p>
 
           <h2>
-            Ready for your
+            Ready for a
             <br />
-            <em>next look?</em>
+            <em>new look?</em>
           </h2>
 
-          <p>
-            Visit us at Tilakwadi, Belagavi or get in touch
-            to plan your next salon visit.
+          <p className="contact-description">
+            Visit Zig Zag Hair Salon and let us help you
+            create a style that feels completely yours.
           </p>
 
           <div className="contact-details">
-            <div>
-              <FiMapPin />
-              <span>
-                Tulips Building, Mandoli Road,
-                <br />
-                Tilakwadi, Belagavi
-              </span>
-            </div>
 
             <div>
-              <FiPhone />
-              <span>+91 95353 54636</span>
+              <FiMapPin />
+              <div>
+                <strong>Location</strong>
+                <span>Belagavi, Karnataka</span>
+              </div>
             </div>
 
             <div>
               <FiClock />
-              <span>8:30 AM – 8:00 PM</span>
+              <div>
+                <strong>Opening Hours</strong>
+                <span>Contact salon for current timings</span>
+              </div>
             </div>
+
+            <div>
+              <FiPhone />
+              <div>
+                <strong>Appointments</strong>
+                <span>Contact the salon directly</span>
+              </div>
+            </div>
+
           </div>
 
           <div className="contact-buttons">
-            <a href="tel:+919535354636" className="primary-btn">
+            <a href="tel:" className="gold-button">
               Call Salon <FiPhone />
             </a>
 
             <a
-              href="https://wa.me/919535354636"
-              className="whatsapp-btn"
+              href="https://www.google.com/maps/search/?api=1&query=Zig+Zag+Hair+Salon+Belagavi"
               target="_blank"
               rel="noreferrer"
+              className="outline-button"
             >
-              WhatsApp
+              <FiMapPin />
+              Get Directions
             </a>
           </div>
         </div>
 
-        <div className="map-card">
-          <div className="map-inner">
-            <FiMapPin />
-            <h3>Blossom Unisex Salon</h3>
-            <p>Tilakwadi, Belagavi</p>
+        <div className="contact-box">
+          <div className="contact-logo">Z</div>
 
-            <a
-              href="https://www.google.com/maps/search/?api=1&query=Blossom+Unisex+Salon+Belagavi"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open in Google Maps →
-            </a>
-          </div>
+          <h3>ZIG ZAG</h3>
+          <span>HAIR SALON</span>
+
+          <div className="contact-line"></div>
+
+          <p>
+            STYLE
+            <br />
+            CONFIDENCE
+            <br />
+            BEAUTY
+          </p>
         </div>
+
       </section>
 
       {/* FOOTER */}
       <footer>
         <div className="footer-logo">
-          <span>B</span>
+          <div className="logo-icon">Z</div>
+
           <div>
-            <strong>BLOSSOM</strong>
-            <small>UNISEX SALON</small>
+            <strong>ZIG ZAG</strong>
+            <span>HAIR SALON</span>
           </div>
         </div>
 
-        <p>Beauty that makes you bloom.</p>
+        <p>Modern style. Confident you.</p>
 
-        <a href="#home" className="instagram">
+        <div className="social">
           <FiInstagram />
-        </a>
+        </div>
       </footer>
 
-      {/* FLOATING WHATSAPP */}
-      <a
-        href="https://wa.me/919535354636"
-        target="_blank"
-        rel="noreferrer"
-        className="floating-whatsapp"
-      >
-        WhatsApp
+      {/* MOBILE BOOK BUTTON */}
+      <a href="#contact" className="mobile-book">
+        <FiPhone />
+        Book Appointment
       </a>
+
     </div>
   );
 }
